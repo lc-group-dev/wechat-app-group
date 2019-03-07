@@ -6,6 +6,6 @@
 </template>
 <script>
   import wepy from 'wepy'
-  export default class MyInformation extends wepy.page {
+  export default class My extends wepy.page {
   }
 </script>

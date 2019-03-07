@@ -1,0 +1,11 @@
+<style lang="less" scoped>
+
+</style>
+<template>
+
+</template>
+<script>
+  import wepy from 'wepy'
+  export default class Board extends wepy.page {
+  }
+</script>
