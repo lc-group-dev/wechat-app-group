@@ -19,16 +19,28 @@ import configStore from './store'
 const store = configStore()
 setStore(store)
 
-export default class extends wepy.app {
+export default class App extends wepy.app {
   config = {
     pages: [
-      'pages/index'
+      'pages/index/index'
     ],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: 'leetcode卡',
-      navigationBarTextStyle: 'black'
+      navigationBarTextStyle: 'black',
+      tabBar: {
+        list: [
+          {
+            pagePath: 'pages/index/index',
+            text: '首页'
+          },
+          {
+            pagePath: 'pages/myInformation/myInfoformation',
+            text: '我'
+          }
+        ]
+      }
     }
   }
 

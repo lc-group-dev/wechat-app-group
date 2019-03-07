@@ -7,3 +7,5 @@
 ## color
     default: #ffffff
     active: #07a4f8
+
+## ESlint
