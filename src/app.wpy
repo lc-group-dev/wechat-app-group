@@ -14,7 +14,6 @@ import wepy from 'wepy'
 import 'wepy-async-function'
 import { setStore } from 'wepy-redux'
 import configStore from './store'
-
 const store = configStore()
 setStore(store)
 
@@ -42,16 +41,16 @@ export default class extends wepy.app {
           text: '首页'
         },
         {
-          iconPath: 'assets/board_btn_0.png',
-          selectedIconPath: 'assets/board_btn_1.png',
-          pagePath: 'pages/board',
-          text: '排行榜'
-        },
-        {
           iconPath: 'assets/user_btn_0.png',
           selectedIconPath: 'assets/user_btn_1.png',
           pagePath: 'pages/my',
           text: '我'
+        },
+        {
+          iconPath: 'assets/board_btn_0.png',
+          selectedIconPath: 'assets/board_btn_1.png',
+          pagePath: 'pages/board',
+          text: '排行榜'
         }
       ]
     }
@@ -68,6 +67,7 @@ export default class extends wepy.app {
 
   onLaunch() {
     this.testAsync()
+    this.login()
   }
 
   sleep (s) {
@@ -83,17 +83,26 @@ export default class extends wepy.app {
     console.log(data)
   }
 
-  getUserInfo(cb) {
-    const that = this
-    if (this.globalData.userInfo) {
-      return this.globalData.userInfo
-    }
-    wepy.getUserInfo({
-      success (res) {
-        that.globalData.userInfo = res.userInfo
-        cb && cb(res.userInfo)
-      }
+  login() {
+    wepy.login({
+      success: res => {
+        console.log('res', res)
+      },
+      fail: () => {},
+      complete: () => {}
     })
   }
+  // getUserInfo(cb) {
+  //   const that = this
+  //   if (this.globalData.userInfo) {
+  //     return this.globalData.userInfo
+  //   }
+  //   wepy.getUserInfo({
+  //     success (res) {
+  //       that.globalData.userInfo = res.userInfo
+  //       cb && cb(res.userInfo)
+  //     }
+  //   })
+  // }
 }
 </script>
