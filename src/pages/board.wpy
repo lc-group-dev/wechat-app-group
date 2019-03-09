@@ -3,6 +3,9 @@
     width: 100%;
     font-weight: 400;
     font-size: 13px;
+    .list {
+      margin-top: 10px;
+    }
     .item {
       line-height: 50px;
       margin-top: 1px;
@@ -16,14 +19,31 @@
         display: flex;
         flex-direction: row;
         align-items: center;
+        .id {
+          width: 25px;
+          text-align: center;
+        }
         .name {
           margin-left: 10px;
         }
         image {
-          margin-left: 10px;
           width: 40px;
           height: 40px;
           border-radius: 20px;
+        }
+        .own-rank {
+          display: flex;
+          flex-direction: column;
+          margin-left: 10px;
+          .name {
+            margin: 0px;
+            line-height: normal;
+          }
+          .rank {
+            font-size: 10px;
+            color: gray;
+            line-height: normal;
+          }
         }
       }
       .right {
@@ -42,10 +62,25 @@
 </style>
 <template>
   <view class="container">
+    <view class="item">
+      <view class="left">
+        <text class="id"></text>
+        <image src="{{myCardDetail.avator}}" />
+        <view class="own-rank">        
+          <text class="name">{{myCardDetail.name}}</text>
+          <text class="rank"> 第{{myCardDetail.ranking}}名</text>
+        </view>
+      </view>
+      <view class="right">
+        <text> {{myCardDetail.love}} </text>
+        <image src="{{myCardDetail.ownLove ? '../assets/support_btn_1.svg' : '../assets/support_btn_0.svg'}}"/>
+      </view>
+    </view>
+    <view class="list"></view>
     <repeat for="{{list}}">
       <view class="item">
         <view class="left">
-          <text> {{index + 1}}</text>
+          <text class="id"> {{index + 1}}</text>
           <image src="{{item.avator}}" />
           <text class="name">{{item.name}}</text>
         </view>
@@ -68,6 +103,13 @@
         time: '2019/3/7',
         real: 30,
         should: 100
+      },
+      myCardDetail: {
+        avator: '../assets/avator.jpg',
+        name: 'Luther',
+        leetcodeNum: 100,
+        love: 0,
+        ranking: 1
       },
       list: [
         {
