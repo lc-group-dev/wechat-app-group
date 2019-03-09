@@ -1,17 +1,41 @@
 <style lang="less" scoped>
   .container {
     width: 100%;
+    font-weight: 400;
+    font-size: 13px;
     .item {
-      width: 100%;
-      margin-top: 10px;
+      line-height: 50px;
+      margin-top: 1px;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       background-color: #fff;
-      image {
-        width: 50px;
-        height: 50px;
-        border-radius: 25px;
+      padding-left: 10px;
+      padding-right: 10px;
+      .left {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .name {
+          margin-left: 10px;
+        }
+        image {
+          margin-left: 10px;
+          width: 40px;
+          height: 40px;
+          border-radius: 20px;
+        }
+      }
+      .right {
+        display: flex;
+        flex-direction: column;
+        line-height: normal;
+        justify-content: center;
+        text-align: center;
+        image {
+          width: 20px;
+          height: 20px;
+        }
       }
     }
   }
@@ -20,11 +44,12 @@
   <view class="container">
     <repeat for="{{list}}">
       <view class="item">
-        <view>
+        <view class="left">
+          <text> {{index + 1}}</text>
           <image src="{{item.avator}}" />
-          <text>{{item.name}}</text>
+          <text class="name">{{item.name}}</text>
         </view>
-        <view>
+        <view class="right">
           <text> {{item.love}} </text>
           <image src="{{item.ownLove ? '../assets/support_btn_0.svg' : '../assets/support_btn_1.svg'}}" />
         </view>
