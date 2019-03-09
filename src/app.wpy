@@ -1,6 +1,7 @@
 <style lang="less">
 .container {
-  height: 100%;
+  height: 100vh;
+  background-color: #ededed;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,9 +27,11 @@ export default class extends wepy.app {
     ],
     window: {
       backgroundTextStyle: 'light',
-      navigationBarBackgroundColor: '#fff',
+      navigationBarBackgroundColor: '#ededed',
       navigationBarTitleText: 'leetcode卡',
-      navigationBarTextStyle: 'black'
+      navigationBarTextStyle: 'black',
+      enablePullDownRefresh: true,
+      backgroundColor: '#ededed'
     },
     tabBar: {
       color: '#000000',
@@ -86,6 +89,7 @@ export default class extends wepy.app {
   login() {
     wepy.login({
       success: res => {
+        // 登录并获取token
         console.log('res', res)
       },
       fail: () => {},

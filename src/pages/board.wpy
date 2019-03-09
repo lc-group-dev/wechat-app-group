@@ -1,11 +1,73 @@
 <style lang="less" scoped>
-
+  .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    .item {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      image {
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+      }
+    }
+  }
 </style>
 <template>
-
+  <view class="container">
+    <repeat for="{{list}}">
+      <panel class="item">
+        <view>
+          <image src="{{item.avator}}" />
+        </view>
+        <view>
+        </view>
+        <view>{{item}}</view>
+      </panel>
+    </repeat>
+  </view>
 </template>
 <script>
   import wepy from 'wepy'
   export default class Board extends wepy.page {
+    config = {
+      'navigationBarTitleText': '每日榜单'
+    }
+    data = {
+      dayCardDetail: {
+        time: '2019/3/7',
+        real: 30,
+        should: 100
+      },
+      list: [
+        {
+          avator: '../assets/avator.jpg',
+          love: 0,
+          name: 'Luther',
+          leetcodeNum: 100,
+          ownLove: true
+        },
+        {
+          avator: '../assets/avator.jpg',
+          love: 0,
+          name: 'Luther',
+          leetcodeNum: 100,
+          ownLove: true
+        },
+        {
+          avator: '../assets/avator.jpg',
+          love: 0,
+          name: 'Luther',
+          leetcodeNum: 100,
+          ownLove: true
+        }
+      ]
+    }
+    onLoad() {
+
+    }
   }
 </script>
