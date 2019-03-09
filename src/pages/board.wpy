@@ -51,7 +51,7 @@
         </view>
         <view class="right">
           <text> {{item.love}} </text>
-          <image src="{{item.ownLove ? '../assets/support_btn_0.svg' : '../assets/support_btn_1.svg'}}" />
+          <image src="{{item.ownLove ? '../assets/support_btn_1.svg' : '../assets/support_btn_0.svg'}}" @tap="supportThisPeople({{index}})"/>
         </view>
       </view>
     </repeat>
@@ -92,6 +92,12 @@
           ownLove: true
         }
       ]
+    }
+    methods = {
+      supportThisPeople(index) {
+        this.data.list[index].ownLove === true ? this.data.list[index].ownLove = false : this.data.list[index].ownLove = true
+        this.$apply()
+      }
     }
     onLoad() {
 
