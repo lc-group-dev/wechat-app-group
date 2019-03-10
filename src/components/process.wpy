@@ -1,0 +1,91 @@
+<style lang="less" scoped>
+
+@keyframes changeOpacity {
+    from { opacity: 1; }
+    to { opacity: .2; }
+}
+.process {
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+.q-loading-dot-warp {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    .dot {
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        background-color: #0033cc;
+        border-radius: 50% 50%;
+        opacity: 1;
+        animation: changeOpacity 1.04s ease infinite;
+    }
+    .dot1 {
+        left: 0;
+        top: 50%;
+        margin-top: -5px;
+        animation-delay: 0.13s;
+    }
+    .dot2 {
+        left: 9.37px;
+        top: 9.37px;
+        animation-delay: 0.26s;
+    }
+    .dot3 {
+        left: 50%;
+        top: 0;
+        margin-left: -5px;
+        animation-delay: 0.39s;
+    }
+    .dot4 {
+        top: 9.37px;
+        right: 9.37px;
+        animation-delay: 0.52s;
+    }
+    .dot5 {
+        right: 0;
+        top: 50%;
+        margin-top: -5px;
+        animation-delay: 0.65s;
+    }
+    .dot6 {
+        right: 9.37px;
+        bottom: 9.37px;
+        animation-delay: 0.78s;
+    }
+    .dot7 {
+        bottom: 0;
+        left: 50%;
+        margin-left: -5px;
+        animation-delay: 0.91s;
+    }
+    .dot8 {
+        bottom: 9.37px;
+        left: 9.37px;
+        animation-delay: 1.04s;
+    }
+}
+</style>
+<template>
+  <view class="process">    
+    <view class="q-loading-dot-warp">  
+      <view class="dot dot1"></view>
+      <view class="dot dot2"></view>
+      <view class="dot dot3"></view>
+      <view class="dot dot4"></view>
+      <view class="dot dot5"></view>
+      <view class="dot dot6"></view>
+      <view class="dot dot7"></view>
+      <view class="dot dot8"></view>
+    </view>
+  </view>
+</template>
+<script>
+  import wepy from 'wepy'
+  export default class Process extends wepy.component {
+    data = {
+    }
+  }
+</script>

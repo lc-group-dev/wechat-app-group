@@ -17,6 +17,7 @@ setStore(store)
 export default class extends wepy.app {
   config = {
     pages: [
+      'pages/start',
       'pages/index',
       'pages/my',
       'pages/board'
@@ -56,17 +57,18 @@ export default class extends wepy.app {
   }
 
   globalData = {
-    userInfo: null
+    userInfo: null,
+    token: null
   }
 
   constructor () {
     super()
     this.use('requestfix')
+    this.use('promisify')
   }
 
   onLaunch() {
     this.testAsync()
-    this.login()
   }
 
   sleep (s) {
@@ -82,27 +84,5 @@ export default class extends wepy.app {
     console.log(data)
   }
 
-  login() {
-    wepy.login({
-      success: res => {
-        // 登录并获取token
-        console.log('res', res)
-      },
-      fail: () => {},
-      complete: () => {}
-    })
-  }
-  // getUserInfo(cb) {
-  //   const that = this
-  //   if (this.globalData.userInfo) {
-  //     return this.globalData.userInfo
-  //   }
-  //   wepy.getUserInfo({
-  //     success (res) {
-  //       that.globalData.userInfo = res.userInfo
-  //       cb && cb(res.userInfo)
-  //     }
-  //   })
-  // }
 }
 </script>

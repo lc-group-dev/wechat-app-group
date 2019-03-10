@@ -1,0 +1,51 @@
+<style lang="less" scoped>
+  .start_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+  }
+  image {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  button {
+    padding: 0px 15px 0px 15px;
+    display: inline-block;
+    background-color: #34495e;
+    color: #ffffff;
+    &:active {
+      opacity: 0.8;
+      margin: auto;
+    }
+  }
+</style>
+<template>
+    <view class="start_container">
+        <image src="../assets/start_card_0.jpg" />
+        <process wx:if="{{alreadyLogin}}"></process>
+        <button wx:if="{{!alreadyLogin}}"> 开始打卡 </button>
+        {{alreadyLogin}}
+    </view>
+</template>
+<script>
+import wepy from 'wepy'
+import process from '@/components/process'
+export default class Home extends wepy.page {
+  config = {
+    navigationBarBackgroundColor: '#ffffff',
+    navigationBarTitleText: ''
+  }
+  data = {
+    alreadyLogin: true
+  }
+  components = {
+    process
+  }
+  async onLoad() {
+    const res = await wepy.login()
+    console.log('res', res)
+  }
+}
+</script>
