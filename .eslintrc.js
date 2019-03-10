@@ -29,6 +29,7 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
     'space-before-function-paren': 0,
     'indent': ["error", 2],
-    'promise/param-names': 0
+    'promise/param-names': 0,
+    'no-new': 0
   }
 }
