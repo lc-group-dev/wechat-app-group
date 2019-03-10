@@ -25,13 +25,13 @@
     <view class="start_container">
         <image src="../assets/start_card_0.jpg" />
         <process wx:if="{{alreadyLogin}}"></process>
-        <button wx:if="{{!alreadyLogin}}"> 开始打卡 </button>
-        {{alreadyLogin}}
+        <button wx:if="{{!alreadyLogin}}" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" > 开始打卡 </button>
     </view>
 </template>
 <script>
 import wepy from 'wepy'
 import process from '@/components/process'
+import { getLoginInfo, storeUserInfo } from '@/service/auth'
 export default class Home extends wepy.page {
   config = {
     navigationBarBackgroundColor: '#ffffff',
@@ -43,9 +43,25 @@ export default class Home extends wepy.page {
   components = {
     process
   }
+  methods = {
+    async onGotUserInfo(e) {
+      console.log(e.detail.errMsg)
+      console.log(e.detail.userInfo)
+      console.log(e.detail.rawData)
+      await storeUserInfo(e.detail.userInfo)
+    }
+  }
   async onLoad() {
-    const res = await wepy.login()
-    console.log('res', res)
+    const state = await getLoginInfo()
+    setTimeout(() => {
+      if (state === 0) {
+        this.alreadyLogin = false
+      } else if (state === 1) {
+        wepy.redirectTo({ url: 'pages/bindLeetcode' })
+      } else {
+        wepy.redirectTo({ url: 'pages/index' })
+      }
+    }, 2000)
   }
 }
 </script>
