@@ -54,6 +54,7 @@
     <view class="userinfo">
       <view class="avator">
         <open-data type="userAvatarUrl" class="avator"></open-data>
+        <open-data type="getUserInfo"  bindgetuserinfo="userInfoHandler"></open-data>
       </view>
       <text class="description">Luther</text>
     </view>
