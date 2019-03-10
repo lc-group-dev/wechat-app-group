@@ -11,5 +11,3 @@
 ## ESlint
 
 ## 微信小程序
-   AppId: wxf1ab6b7a4fe6f409
-   key: f701618c180956ba4b58e038e08d4170
