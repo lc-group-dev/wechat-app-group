@@ -40,7 +40,7 @@ export async function storeUserInfo(userinfo) {
 }
 
 function login() {
-  return Promise((reslove, reject) => {
+  return new Promise((reslove, reject) => {
     wepy.login({
       success: res => {
         reslove(res)

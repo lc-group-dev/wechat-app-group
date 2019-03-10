@@ -1,0 +1,12 @@
+<style lang="less" scoped>
+
+</style>
+<template>
+    
+</template>
+<script>
+import wepy from 'wepy'
+export default class BindLeetCode extends wepy.page {
+
+}
+</script>

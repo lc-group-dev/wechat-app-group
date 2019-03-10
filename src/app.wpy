@@ -18,6 +18,7 @@ export default class extends wepy.app {
   config = {
     pages: [
       'pages/start',
+      'pages/bindLeetCode',
       'pages/index',
       'pages/my',
       'pages/board'
