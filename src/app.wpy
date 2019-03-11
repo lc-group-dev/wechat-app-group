@@ -17,8 +17,8 @@ setStore(store)
 export default class extends wepy.app {
   config = {
     pages: [
-      'pages/index',
       'pages/start',
+      'pages/index',
       'pages/bindLeetCode',
       'pages/my',
       'pages/board'

@@ -1,6 +1,6 @@
 import wepy from 'wepy'
 export async function retryLogin() {
-  const res = await login()
+  const res = await wepy.login()
   if (res.code) {
     const res2 = await wepy.request({
       url: 'http://ssss',
@@ -14,7 +14,8 @@ export async function retryLogin() {
 }
 
 export async function getLoginInfo() {
-  const res = await login()
+  const res = await wepy.login()
+  console.log('666', res)
   if (res.code) {
     const res2 = await wepy.request({
       url: 'http://ssss',
@@ -37,18 +38,4 @@ export async function storeUserInfo(userinfo) {
     dataType: 'json' //如果设为json，会尝试对返回的数据做一次 JSON.parse
   })
   return res
-}
-
-function login() {
-  return new Promise((reslove, reject) => {
-    wepy.login({
-      success: res => {
-        reslove(res)
-      },
-      fail: () => {
-        reject(new Error('login Error'))
-      },
-      complete: () => {}
-    })
-  })
 }
