@@ -15,7 +15,12 @@
       }
       .description {
         margin-left: 10px;
-        margin-top: 15px;
+        margin-top: 13px;
+        display: flex;
+        flex-direction: column;
+        .mini-description {
+          font-size: 11px;
+        }
       }
     }
     .item {
@@ -55,7 +60,11 @@
       <view class="avator">
         <open-data type="userAvatarUrl" class="avator"></open-data>
       </view>
-      <text class="description">Luther</text>
+      <view class="description">
+        <text>Luther</text>
+        <text class="mini-description">请您先绑定LeetCode进行打卡</text>
+      </view>
+
     </view>
     <view class="item">
       <view class="left">
