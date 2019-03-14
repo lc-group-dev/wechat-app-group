@@ -17,12 +17,12 @@ setStore(store)
 export default class extends wepy.app {
   config = {
     pages: [
+      'pages/board',
       'pages/index',
       'pages/cardPercent',
       'pages/my',
       'pages/start',
-      'pages/bindLeetCode',
-      'pages/board'
+      'pages/bindLeetCode'
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -52,7 +52,7 @@ export default class extends wepy.app {
           iconPath: 'assets/board_btn_0.png',
           selectedIconPath: 'assets/board_btn_1.png',
           pagePath: 'pages/board',
-          text: '排行榜'
+          text: '每日榜单'
         },
         {
           iconPath: 'assets/user_btn_0.png',

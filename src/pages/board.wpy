@@ -62,28 +62,25 @@
     .item:active {
       background-color: #d5d4d0;
     }
-    .day-card {
+    .first-people {
+      background-color: #fff;
+      margin-left: 10px;
+      margin-right: 10px;
+      box-sizing: content-box;
       padding-left: 10px;
       padding-right: 10px;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       margin-bottom: 10px;
-      .day-item {
-        padding: 10px;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        image {
-          width: 50px;
-          height: 50px;
-        }
-        background-color: #fff;
-        width: 42%;
-        .text-description {
-          margin-left: 10px;
-          display: flex;
-          flex-direction: column;
+      .left {
+
+      }
+      .right {
+        .avator {
+          width: 70px;
+          height: 70px;
+          border-radius: 35px;
         }
       }
     }
@@ -91,35 +88,20 @@
 </style>
 <template>
   <view class="container">
-    <view class="day-card">
-      <view class="day-item">  
-        <image src="../assets/date_label_0.svg" />
-        <view class="text-description">
-          <text>日期   </text>
-          <text>{{dayCardDetail.time}} </text>
+    <view class="first-people">
+      <view class="left">
+        <text> 截至{{firstPeople.deadLine}} </text>
+        <view>
+          <text> 他完成了{{firstPeople.numOfQuestion}}题 </text>
+          <text> 统计人数: {{dayCardDetail.should}}人 </text>
+          <text> 打卡人数: {{dayCardDetail.real}}人 </text>
+          <text> 打卡率: {{dayCardDetail.percent}} </text>
         </view>
       </view>
-      <view class="day-item">  
-        <image src="../assets/statistics_label_0.svg" />
-        <view class="text-description">
-          <text> 统计人数  </text>
-          <text> {{dayCardDetail.should}} </text>
-        </view>
-      </view>
-    </view>
-    <view class="day-card">
-      <view class="day-item">  
-        <image src="../assets/card_label_0.svg" />
-        <view class="text-description">
-          <text> 打卡人数 </text>
-          <text> {{dayCardDetail.real }}  </text>
-        </view>
-      </view>
-      <view class="day-item">  
-        <image src="../assets/percent_label_0.svg" />
-        <view class="text-description">
-          <text> 打卡率 </text>
-          <text>{{dayCardDetail.percent}} </text>
+      <view class="right">
+        <text> 今日冠军 <text> {{firstPeople.username}} </text> </text>
+        <view>
+          <image class="avator" src="{{firstPeople.avatorUrl}}" />
         </view>
       </view>
     </view>
@@ -160,8 +142,13 @@
       'navigationBarTitleText': '每日榜单'
     }
     data = {
+      firstPeople: {
+        deadLine: '2019/03/10 23:00',
+        numOfQuestion: 100,
+        avatorUrl: '../assets/avator.jpg',
+        username: 'Luther'
+      },
       dayCardDetail: {
-        time: '2019/3/7',
         real: 30,
         should: 100,
         percent: '20%'
