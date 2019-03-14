@@ -1,12 +1,53 @@
 <style lang="less" scoped>
+    .container {
+        width: 100%;
+        padding: 30px 10px 20px 10px;
+        .content {
+            border-radius: 5px;
+            background: white;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .title {
+                font-size: 13px;
+                font-weight: 500;
+            }
+            .input {
+                margin-top: 10px;
+                text-align: left;
+                line-height: 30px;
+                border-bottom: 1px solid gray;
+                width: 90%;
+            }
+            button {
+                margin-top: 15px;
+                font-size: 15px;
+                line-height: 30px;
+                padding: 0px 20px 0px 20px;
+            }
+        }
 
+    }
 </style>
 <template>
-    
+    <view class="container">
+        <view class="content">
+            <text class="title">
+                请输入您的leetcode\力扣中国个人主页链接
+            </text>
+            <input class="input"/>
+            <button > 提交链接 </button>
+        </view>
+    </view>
 </template>
 <script>
 import wepy from 'wepy'
 export default class BindLeetCode extends wepy.page {
-
+  config = {
+    'navigationBarTitleText': '绑定LeetCode'
+  }
 }
 </script>
