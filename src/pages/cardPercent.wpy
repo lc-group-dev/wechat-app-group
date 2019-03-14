@@ -1,0 +1,115 @@
+<style lang="less" scoped>
+  .container {
+    width: 100%;
+    font-weight: 400;
+    font-size: 13px;
+    .list {
+      margin-top: 10px;
+    }
+    .item {
+      line-height: 50px;
+      margin-top: 1px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      background-color: #fff;
+      padding-left: 10px;
+      padding-right: 10px;
+      height: 50px;
+      .left {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .id {
+          width: 25px;
+          text-align: center;
+        }
+        .name {
+          margin-left: 10px;
+        }
+        image {
+          width: 40px;
+          height: 40px;
+          border-radius: 20px;
+        }
+        .own-rank {
+          display: flex;
+          flex-direction: column;
+          margin-left: 10px;
+          .name {
+            margin: 0px;
+            line-height: normal;
+          }
+          .rank {
+            font-size: 10px;
+            color: gray;
+            line-height: normal;
+          }
+        }
+      }
+      .right {
+        display: flex;
+        flex-direction: column;
+        line-height: normal;
+        justify-content: center;
+        text-align: center;
+        image {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+    .item:active {
+      background-color: #d5d4d0;
+    }
+    .day-card {
+      padding-left: 10px;
+      padding-right: 10px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      .day-item {
+        padding: 10px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        image {
+          width: 50px;
+          height: 50px;
+        }
+        background-color: #fff;
+        width: 42%;
+        .text-description {
+          margin-left: 10px;
+          display: flex;
+          flex-direction: column;
+        }
+      }
+    }
+  }
+</style>
+<template>
+  <view class="container">
+
+  </view>
+</template>
+<script>
+  import wepy from 'wepy'
+  export default class Board extends wepy.page {
+    config = {
+      'navigationBarTitleText': '打卡率'
+    }
+    data = {
+    }
+    methods = {
+      supportThisPeople(index) {
+        this.data.list[index].ownLove === true ? this.data.list[index].ownLove = false : this.data.list[index].ownLove = true
+        this.$apply()
+      }
+    }
+    onLoad() {
+
+    }
+  }
+</script>
