@@ -28,6 +28,12 @@
                 line-height: 30px;
                 padding: 0px 20px 0px 20px;
             }
+            .fill {
+                background-color: darkgoldenrod;
+            }
+            .no-fill {
+                background-color: gray;
+            }
         }
 
     }
@@ -38,8 +44,8 @@
             <text class="title">
                 请输入您的leetcode\力扣中国个人主页链接
             </text>
-            <input class="input"/>
-            <button > 提交链接 </button>
+            <input class="input" value='{{link}}' bindinput="bindInput"/>
+            <button class="{{link !== '' ? 'fill' : 'no-fill' }}"> 提交链接 </button>
         </view>
     </view>
 </template>
@@ -48,6 +54,14 @@ import wepy from 'wepy'
 export default class BindLeetCode extends wepy.page {
   config = {
     'navigationBarTitleText': '绑定LeetCode'
+  }
+  data = {
+    link: ''
+  }
+  methods = {
+    bindInput(e) {
+      this.link = e.detail.value
+    }
   }
 }
 </script>
