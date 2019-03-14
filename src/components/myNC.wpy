@@ -1,7 +1,6 @@
 <style lang="less" scoped>
   .container {
     widows: 100%;
-    padding-top: 10px;
     .userinfo {
       box-sizing: content-box;
       background-color: white;
@@ -52,21 +51,26 @@
 </style>
 <template>
   <view class="container">
-    <myC wx:if= "{{alreadyBind}}"></myC>
-    <myNC wx:else></myNC>
+    <view class="userinfo">
+      <view class="avator">
+        <open-data type="userAvatarUrl" class="avator"></open-data>
+      </view>
+      <text class="description">Luther</text>
+    </view>
+    <view class="item">
+      <view class="left">
+        <image src="../assets/bind_btn_0.svg" />
+        <text> 未绑定 </text>
+      </view>
+      <image src="../assets/enter_btn_0.svg" />
+    </view>
   </view>
 </template>
 <script>
   import wepy from 'wepy'
-  import myC from '@/components/myC'
-  import myNC from '@/components/myNC'
-  export default class My extends wepy.page {
+  export default class myNC extends wepy.component {
     data = {
-      alreadyBind: false
-    }
-    components = {
-      myC: myC,
-      myNC: myNC
+      alreadyBind: true
     }
     onLoad() {
     }
