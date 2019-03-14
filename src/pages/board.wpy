@@ -67,14 +67,18 @@
       margin-left: 10px;
       margin-right: 10px;
       box-sizing: content-box;
+      padding-top: 10px;
+      padding-bottom: 10px;
       padding-left: 10px;
       padding-right: 10px;
+      border-radius: 10px;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       margin-bottom: 10px;
       .left {
-
+        display: flex;
+        flex-direction: column;
       }
       .right {
         .avator {
@@ -91,12 +95,10 @@
     <view class="first-people">
       <view class="left">
         <text> 截至{{firstPeople.deadLine}} </text>
-        <view>
-          <text> 他完成了{{firstPeople.numOfQuestion}}题 </text>
-          <text> 统计人数: {{dayCardDetail.should}}人 </text>
-          <text> 打卡人数: {{dayCardDetail.real}}人 </text>
-          <text> 打卡率: {{dayCardDetail.percent}} </text>
-        </view>
+        <text> 他完成了{{firstPeople.numOfQuestion}}题 </text>
+        <text> 统计人数: {{dayCardDetail.should}}人 </text>
+        <text> 打卡人数: {{dayCardDetail.real}}人 </text>
+        <text> 打卡率: {{dayCardDetail.percent}} </text>
       </view>
       <view class="right">
         <text> 今日冠军 <text> {{firstPeople.username}} </text> </text>
