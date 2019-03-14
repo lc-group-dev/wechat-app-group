@@ -62,7 +62,7 @@
   import myNC from '@/components/myNC'
   export default class My extends wepy.page {
     data = {
-      alreadyBind: false
+      alreadyBind: true
     }
     components = {
       myC: myC,

@@ -7,15 +7,31 @@
       padding: 10px 15px 10px 15px;
       display: flex;
       flex-direction: row;
-      .avator {
-        width: 50px;
-        height: 50px;
-        border-radius: 25px;
-        overflow: hidden;
+      align-items: center;
+      justify-content: space-between;
+      .left {
+        display: flex;
+        flex-direction: row;
+        .avator {
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            overflow: hidden;
+        }
+        .description {
+            margin-left: 10px;
+            margin-top: 15px;
+        }
       }
-      .description {
-        margin-left: 10px;
-        margin-top: 15px;
+      .right {
+        right: 70px;
+        display: flex;
+        flex-direction: column;
+        font-size: 12px;
+        .key {
+            color:greenyellow;
+            font-size: 15px;
+        }
       }
     }
     .item {
@@ -52,15 +68,23 @@
 <template>
   <view class="container">
     <view class="userinfo">
-      <view class="avator">
-        <open-data type="userAvatarUrl" class="avator"></open-data>
+      <view class="left">
+        <view class="avator">
+            <open-data type="userAvatarUrl" class="avator"></open-data>
+        </view>
+        <text class="description">Luther</text>
       </view>
-      <text class="description">Luther</text>
+      <view class="right">
+          <text> 已刷题 <text class="key"> {{questions}} </text> 道</text>
+          <text> 获得 <text class="key"> {{likes}} </text> 赞 </text>
+          <text> 已打卡 <text class="key"> {{days}} </text> 天 </text>
+          <text> 连续打卡 <text class="key"> {{day_continuous}} </text> 天 </text>
+      </view>
     </view>
     <view class="item">
       <view class="left">
         <image src="../assets/bind_btn_0.svg" />
-        <text> 未绑定dsad </text>
+        <text> 已绑定LeetCode </text>
       </view>
       <image src="../assets/enter_btn_0.svg" />
     </view>
@@ -70,7 +94,11 @@
   import wepy from 'wepy'
   export default class myC extends wepy.component {
     data = {
-      alreadyBind: true
+      alreadyBind: true,
+      questions: 10,
+      likes: 10,
+      days: 10,
+      day_continuous: 10
     }
     onLoad() {
     }
