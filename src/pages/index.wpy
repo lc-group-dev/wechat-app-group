@@ -7,7 +7,6 @@
 
   .userinfo-avatar {
     width: 80rpx;
-    height: 80rpx;
     border-radius: 50%;
   }
 
@@ -15,26 +14,19 @@
     color: #aaa;
   }
 </style>
-<template>   <view class="page">
+<template>   
+  <view class="page">
     <view class="page__bd" >
-       <view class="weui-article">
-                <view class="weui-article__section">
-                    <view class="weui-article__section">
-                        <view class="weui-article__h3">美元价格（24h）</view>
-                        <view class="weui-article__p">
-                           <wxcharts class="charts" canvasId="lineCanvas"></wxcharts>
-                        </view>
-
-                    </view>
-                    <view class="weui-article__section">
-                        <view class="weui-article__h3">RAM价格</view>
-                        <view class="weui-article__p">
-                            <wxcharts2 class="chartsb" canvasId="lineCanvas2"></wxcharts2>
-                        </view>
-                    </view>
+      <view class="weui-article">
+        <view class="weui-article__section">
+            <view class="weui-article__section">
+                <view class="weui-article__h3">RAM价格</view>
+                <view class="weui-article__p">
+                    <wxcharts2 class="chartsb" canvasId="lineCanvas2"></wxcharts2>
                 </view>
             </view>
-
+        </view>
+      </view>
     </view>
   </view>
 </template>
@@ -58,7 +50,6 @@
 
   export default class Index extends wepy.page {
     components = {
-      wxcharts: WxCharts,
       wxcharts2: WxCharts
     }
     data = {
