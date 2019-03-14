@@ -64,13 +64,13 @@
     }
     .first-people {
       background-color: #fff;
-      margin-left: 10px;
-      margin-right: 10px;
+      margin-left: 6px;
+      margin-right: 6px;
       box-sizing: content-box;
       padding-top: 10px;
       padding-bottom: 10px;
-      padding-left: 10px;
-      padding-right: 10px;
+      padding-left: 15px;
+      padding-right: 15px;
       border-radius: 10px;
       display: flex;
       flex-direction: row;
@@ -79,9 +79,36 @@
       .left {
         display: flex;
         flex-direction: column;
+        .dead-line {
+          font-size: 13px;
+          color: gray;
+          .time {
+            margin-left: 3px;
+          }
+        }
+        .num-question {
+          margin-top: 10px;
+        }
+        .statistics {
+          margin-top: 10px;
+        }
+        .key {
+          margin-left: 3px;
+          margin-right: 3px;
+          font-size: 13px;
+          font-weight: 700;
+        }
       }
       .right {
+        text-align: center;
+        .key {
+          margin-left: 3px;
+          margin-right: 3px;
+          font-size: 13px;
+          font-weight: 700;
+        }
         .avator {
+          margin-top: 20px;
           width: 70px;
           height: 70px;
           border-radius: 35px;
@@ -94,14 +121,14 @@
   <view class="container">
     <view class="first-people">
       <view class="left">
-        <text> 截至{{firstPeople.deadLine}} </text>
-        <text> 他完成了{{firstPeople.numOfQuestion}}题 </text>
-        <text> 统计人数: {{dayCardDetail.should}}人 </text>
-        <text> 打卡人数: {{dayCardDetail.real}}人 </text>
-        <text> 打卡率: {{dayCardDetail.percent}} </text>
+        <text class="dead-line"> 截至 <text class="time">{{firstPeople.deadLine}} </text> </text>
+        <text class="num-question"> 他完成了<text class="key">{{firstPeople.numOfQuestion}} </text>题 </text>
+        <text class="statistics"> 统计人数: <text class="key">{{dayCardDetail.should}} </text> 人 </text>
+        <text> 打卡人数: <text class="key"> {{dayCardDetail.real}} </text> 人 </text>
+        <text> 打卡率: <text class="key"> {{dayCardDetail.percent}} </text> </text>
       </view>
       <view class="right">
-        <text> 今日冠军 <text> {{firstPeople.username}} </text> </text>
+        <text> 今日冠军是: <text class="key"> {{firstPeople.username}} </text> </text>
         <view>
           <image class="avator" src="{{firstPeople.avatorUrl}}" />
         </view>
