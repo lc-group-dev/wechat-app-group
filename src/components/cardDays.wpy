@@ -3,10 +3,40 @@
     width: 100%;
     font-weight: 400;
     font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .first-people {
+      width: 80%;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #fff;
+      border-radius: 10px;
+      padding-top: 0px;
+      padding-bottom: 10px;
+      text {
+        line-height: normal;
+      }
+      .avator {
+        margin-top: 10px;
+        width: 70px;
+        height: 70px;
+        border-radius: 35px;
+        margin-bottom: 10px;
+      }
+      .key {
+        font-size: 16px;
+        font-weight: 800;
+      }
+    }
     .list {
       margin-top: 10px;
     }
     .item {
+      width: 100%;
       line-height: 50px;
       margin-top: 1px;
       display: flex;
@@ -66,12 +96,14 @@
 </style>
 <template>
   <view class="container">
-    <text>
-        打卡天数
-    </text>
-    <image src="{{firstPeople.avator}}"/>
-    <text> <text> {{firstPeople.username}}</text> 位居榜单第一 </text>
-        <view class="item">
+    <view class="first-people">  
+      <text>
+          打卡天数
+      </text>
+      <image class="avator" src="{{firstPeople.avator}}"/>
+      <text> <text class="key"> {{firstPeople.username}}</text> 位居榜单第一 </text>
+    </view>
+    <view class="item">
       <view class="left">
         <text class="id"></text>
         <image src="{{myCardDetail.avator}}" />
