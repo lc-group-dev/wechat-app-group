@@ -49,13 +49,26 @@
       }
       .right {
         display: flex;
-        flex-direction: column;
-        line-height: normal;
-        justify-content: center;
-        text-align: center;
-        image {
-          width: 20px;
-          height: 20px;
+        flex-direction: row;
+        .own-key {
+          font-size: 20px;
+          color: rebeccapurple;
+        }
+        .key {
+          font-size: 20px;
+          color: goldenrod;
+        }
+        .right-right {
+          margin-left: 10px;
+          display: flex;
+          flex-direction: column;
+          line-height: normal;
+          justify-content: center;
+          text-align: center;
+          image {
+            width: 20px;
+            height: 20px;
+          }
         }
       }
     }
@@ -144,8 +157,11 @@
         </view>
       </view>
       <view class="right">
-        <text> {{myCardDetail.love}} </text>
-        <image src="{{myCardDetail.ownLove ? '../assets/support_btn_1.svg' : '../assets/support_btn_0.svg'}}"/>
+        <text> 第 <text class="own-key"> {{myCardDetail.leetcodeNum}} </text> 题 </text>
+        <view class="right-right">
+          <text> {{myCardDetail.love}} </text>
+          <image src="{{myCardDetail.ownLove ? '../assets/support_btn_1.svg' : '../assets/support_btn_0.svg'}}"/>
+        </view>
       </view>
     </view>
     <view class="list"></view>
@@ -157,8 +173,11 @@
           <text class="name">{{item.name}}</text>
         </view>
         <view class="right">
-          <text> {{item.love}} </text>
-          <image src="{{item.ownLove ? '../assets/support_btn_1.svg' : '../assets/support_btn_0.svg'}}" @tap="supportThisPeople({{index}})"/>
+          <text> 第<text class="key"> {{item.leetcodeNum}} </text> 题 </text>
+          <view class="right-right"> 
+            <text> {{item.love}} </text>
+            <image src="{{item.ownLove ? '../assets/support_btn_1.svg' : '../assets/support_btn_0.svg'}}" @tap="supportThisPeople({{index}})"/>
+          </view>
         </view>
       </view>
     </repeat>
