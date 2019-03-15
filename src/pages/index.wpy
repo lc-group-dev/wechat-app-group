@@ -1,9 +1,9 @@
 <style lang="less" scoped>
 .container {
   width: 100%;
+  position: relative;
   .topbar {
     width: 100%;
-    position: fixed;
     display: flex;
     flex-direction: row;
     background-color: #ffffff;
@@ -15,6 +15,16 @@
       text-align: center;
       flex: 1;
     }
+    .topbar-select {
+      box-shadow: 0 0 6px rgba(0,0,0,.06);
+      border-bottom: 1px solid #e2e2e2;
+      text-align: center;
+      color: #07a4f8;
+      flex: 1;
+    }
+  }
+  .top-content {
+    position: relative;
   }
 }
 </style>
@@ -22,9 +32,14 @@
 <template>   
   <view class="container">
     <view class="topbar">
-      <view class="topbar-item"> 个人刷题数 </view>
-      <view class="topbar-item"> 打卡天数 </view>
-      <view class="topbar-item"> 连续打卡天数 </view>
+      <view class="{{ topbar == 0 ? 'topbar-select' : 'topbar-item' }}" @tap="changeTab(0)"> 个人刷题数 </view>
+      <view class="{{ topbar == 1 ? 'topbar-select' : 'topbar-item' }}" @tap="changeTab(1)"> 打卡天数 </view>
+      <view class="{{ topbar == 2 ? 'topbar-select' : 'topbar-item' }}" @tap="changeTab(2)"> 连续打卡天数 </view>
+    </view>
+    <view class="top-content">
+      <cardDays wx:if='{{ topbar == 0 }}' />
+      <continuesCardDay wx:if="{{ topbar == 1 }}" />
+      <ownQuestion wx:if="{{ topbar == 2 }}" />
     </view>
   </view>
 </template>
@@ -32,7 +47,10 @@
 <script>
   import wepy from 'wepy'
   import { connect } from 'wepy-redux'
-
+  import { TOPBARTYPE } from '@/config'
+  import CardDays from '@/components/cardDays'
+  import ContinuesCardDay from '@/components/continuesCardDay'
+  import OwnQuestion from '@/components/ownQuestion'
   @connect({
     num (state) {
       return state.counter.num
@@ -47,14 +65,24 @@
 
   export default class Index extends wepy.page {
     components = {
+      cardDays: CardDays,
+      continuesCardDay: ContinuesCardDay,
+      ownQuestion: OwnQuestion
     }
     data = {
+      topbar: TOPBARTYPE.OWNQUESTION
     }
 
     computed = {
     }
 
     methods = {
+      changeTab(types) {
+        console.log(types)
+        this.topbar = types
+        console.log(this.topbar)
+        this.$apply()
+      }
     }
 
     events = {

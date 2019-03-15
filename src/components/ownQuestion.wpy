@@ -1,0 +1,14 @@
+<style lang="less" scoped>
+
+</style>
+<template>
+    <view>
+        ownQuestion
+    </view>
+</template>
+<script>
+import wepy from 'wepy'
+export default class OwnQuestion extends wepy.component {
+
+}
+</script>

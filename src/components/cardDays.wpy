@@ -1,0 +1,14 @@
+<style lang="less" scoped>
+
+</style>
+<template>
+    <view>
+        cardDays
+    </view>
+</template>
+<script>
+import wepy from 'wepy'
+export default class CardDays extends wepy.component {
+
+}
+</script>
