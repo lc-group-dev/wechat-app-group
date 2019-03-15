@@ -1,87 +1,166 @@
-<style type="css">
-.container {
-    position:absolute;
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:space-between;
-    box-sizing:border-box;
-}
+<style lang="less" scoped>
+  .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .first {
+      border-radius: 10px;
+      position: relative;
+      width: 90%;
+      height: 49vh;
+      background-color: white;
+      .echarts {
+        position: absolute;
+        top: 0;
+        left: 20px;
+        bottom: 0;
+        right: 0;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:space-between;
+        box-sizing:border-box;
+      }
+    }
+    .second {
+      margin-top: 1vh;
+      border-radius: 10px;
+      position: relative;
+      width: 90%;
+      height: 49vh;
+      background-color: white;
+      overflow: hidden;
+      .echarts {
+        position: absolute;
+        top: 0;
+        left: 0px;
+        bottom: 0;
+        right: 0;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:space-between;
+        box-sizing:border-box;
+      }
+    }
+  }
 </style>
+
 <template>
     <view class="container" >
-        <echarts  :ec="ec" />
+        <view class="first">
+          <view class="echarts">          
+            <echarts :ec="ec" />
+          </view>     
+        </view>
+        <view class="second">
+          <view class="echarts">          
+            <echarts2 :ec="ec2" />
+          </view>     
+        </view>
     </view>
 </template>
 <script>
 import wepy from 'wepy'
 import Echarts from '../components/echart'
-
+import Echarts2 from '../components/echart2'
 export default class Index extends wepy.page {
 
   config = {
-    'navigationBarTitleText': '示例'
+    'navigationBarTitleText': '打卡率'
   }
 
   components = {
-    echarts: Echarts
+    echarts: Echarts,
+    echarts2: Echarts2
   }
 
   data = {
     ec: {
       option: {
-        backgroundColor: '#ffffff',
-        color: ['#37A2DA', '#FF9F7F'],
-        tooltip: {},
         xAxis: {
-          show: false
+          type: 'category',
+          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
         },
         yAxis: {
-          show: false
-        },
-        radar: {
-          // shape: 'circle',
-          indicator: [{
-            name: '食品',
-            max: 500
-          },
-          {
-            name: '玩具',
-            max: 500
-          },
-          {
-            name: '服饰',
-            max: 500
-          },
-          {
-            name: '绘本',
-            max: 500
-          },
-          {
-            name: '医疗',
-            max: 500
-          },
-          {
-            name: '门票',
-            max: 500
-          }]
+          type: 'value'
         },
         series: [{
-          name: '预算 vs 开销',
-          type: 'radar',
-          data: [{
-            value: [430, 340, 500, 300, 490, 400],
-            name: '预算'
-          },
-          {
-            value: [300, 430, 150, 300, 420, 250],
-            name: '开销'
-          }]
+          data: [820, 932, 901, 934, 1290, 1330, 1320],
+          type: 'line'
         }]
+      }
+    },
+    ec2: {
+      option: {
+        backgroundColor: '#2c343c',
+        title: {
+          text: 'Customized Pie',
+          left: 'center',
+          top: 20,
+          textStyle: {
+            color: '#ccc'
+          }
+        },
+        tooltip: {
+          trigger: 'item',
+          formatter: '{a} <br/>{b} : {c} ({d}%)'
+        },
+        visualMap: {
+          show: false,
+          min: 80,
+          max: 600,
+          inRange: {
+            colorLightness: [0, 1]
+          }
+        },
+        series: [
+          {
+            name: '访问来源',
+            type: 'pie',
+            radius: '55%',
+            center: ['50%', '50%'],
+            data: [
+                {value: 335, name: '直接访问'},
+                {value: 310, name: '邮件营销'},
+                {value: 274, name: '联盟广告'},
+                {value: 235, name: '视频广告'},
+                {value: 400, name: '搜索引擎'}
+            ].sort(function (a, b) { return a.value - b.value }),
+            roseType: 'radius',
+            label: {
+              normal: {
+                textStyle: {
+                  color: 'rgba(255, 255, 255, 0.3)'
+                }
+              }
+            },
+            labelLine: {
+              normal: {
+                lineStyle: {
+                  color: 'rgba(255, 255, 255, 0.3)'
+                },
+                smooth: 0.2,
+                length: 10,
+                length2: 20
+              }
+            },
+            itemStyle: {
+              normal: {
+                color: '#c23531',
+                shadowBlur: 200,
+                shadowColor: 'rgba(0, 0, 0, 0.5)'
+              }
+            },
+
+            animationType: 'scale',
+            animationEasing: 'elasticOut',
+            animationDelay: function (idx) {
+              return Math.random() * 200
+            }
+          }
+        ]
       }
     }
   }
