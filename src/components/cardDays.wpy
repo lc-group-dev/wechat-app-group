@@ -126,7 +126,7 @@
         </view>
       </view>
       <view class="right">
-        <text> 第 <text class="own-key"> {{myCardDetail.leetcodeNum}} </text> 题 </text>
+        <text> 第 <text class="own-key"> {{myCardDetail.leetcodeNum}} </text> 天 </text>
         <view class="right-right">
           <text> {{myCardDetail.love}} </text>
           <image src="{{myCardDetail.ownLove ? '../assets/support_btn_1.svg' : '../assets/support_btn_0.svg'}}"/>
@@ -142,7 +142,7 @@
           <text class="name">{{item.name}}</text>
         </view>
         <view class="right">
-          <text> 第<text class="key"> {{item.leetcodeNum}} </text> 题 </text>
+          <text> 第<text class="key"> {{item.leetcodeNum}} </text> 天 </text>
           <view class="right-right"> 
             <text> {{item.love}} </text>
             <image src="{{item.ownLove ? '../assets/support_btn_1.svg' : '../assets/support_btn_0.svg'}}" @tap="supportThisPeople({{index}})"/>

@@ -37,9 +37,9 @@
       <view class="{{ topbar == 2 ? 'topbar-select' : 'topbar-item' }}" @tap="changeTab(2)"> 连续打卡天数 </view>
     </view>
     <view class="top-content">
-      <cardDays wx:if='{{ topbar == 0 }}' />
-      <continuesCardDay wx:if="{{ topbar == 1 }}" />
-      <ownQuestion wx:if="{{ topbar == 2 }}" />
+      <cardDays wx:if='{{ topbar == 1 }}' />
+      <continuesCardDay wx:if="{{ topbar == 2 }}" />
+      <ownQuestion wx:if="{{ topbar == 0 }}" />
     </view>
   </view>
 </template>
