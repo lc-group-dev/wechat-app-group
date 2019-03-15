@@ -1,32 +1,30 @@
-<style lang="less">
-  .userinfo {
+<style lang="less" scoped>
+.container {
+  width: 100%;
+  .topbar {
+    width: 100%;
+    position: fixed;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    background-color: #ffffff;
+    line-height: 40px;
+    font-size: 10px;
+    .topbar-item {
+      box-shadow: 0 0 6px rgba(0,0,0,.06);
+      border-bottom: 1px solid #e2e2e2;
+      text-align: center;
+      flex: 1;
+    }
   }
-
-  .userinfo-avatar {
-    width: 80rpx;
-    border-radius: 50%;
-  }
-
-  .userinfo-nickname {
-    color: #aaa;
-  }
+}
 </style>
+
 <template>   
-  <view class="page">
-    <view class="page__bd" >
-      <view class="weui-article">
-        <view class="weui-article__section">
-            <view class="weui-article__section">
-                <view class="weui-article__h3">RAM价格</view>
-                <view class="weui-article__p">
-                    <wxcharts2 class="chartsb" canvasId="lineCanvas2"></wxcharts2>
-                </view>
-            </view>
-        </view>
-      </view>
+  <view class="container">
+    <view class="topbar">
+      <view class="topbar-item"> 个人刷题数 </view>
+      <view class="topbar-item"> 打卡天数 </view>
+      <view class="topbar-item"> 连续打卡天数 </view>
     </view>
   </view>
 </template>
@@ -34,7 +32,6 @@
 <script>
   import wepy from 'wepy'
   import { connect } from 'wepy-redux'
-  import WxCharts from '@/components/weCharts'
 
   @connect({
     num (state) {
@@ -50,7 +47,6 @@
 
   export default class Index extends wepy.page {
     components = {
-      wxcharts2: WxCharts
     }
     data = {
     }
@@ -59,37 +55,12 @@
     }
 
     methods = {
-      onGotUserInfo(e) {
-        console.log(e.detail.errMsg)
-        console.log(e.detail.userInfo)
-        console.log(e.detail.rawData)
-      }
     }
 
     events = {
     }
 
     async onLoad() {
-      // let wxLiner = new WxLiner('myCanvas', {
-      //   width: 700,
-      //   height: 400,
-      //   title: '测试线状图',
-      //   legends: [
-      //     {
-      //       text: '测试图1'
-      //     }
-      //   ]
-      // })
-      // console.log(wxLiner)
-      // const res = await wepy.request({
-      //   url: 'https://lc.hellogod.cn/api/checkDayInfo/day', //开发者服务器接口地址",
-      //   data: {
-      //     date: '2019-03-08'
-      //   }, //请求的参数",
-      //   method: 'GET',
-      //   dataType: 'json' //如果设为json，会尝试对返回的数据做一次 JSON.parse
-      // })
-      // console.log(res)
     }
   }
 </script>

@@ -17,8 +17,8 @@ setStore(store)
 export default class extends wepy.app {
   config = {
     pages: [
-      'pages/board',
       'pages/index',
+      'pages/board',
       'pages/cardPercent',
       'pages/my',
       'pages/start',
@@ -40,7 +40,7 @@ export default class extends wepy.app {
           iconPath: 'assets/index_btn_0.png',
           selectedIconPath: 'assets/index_btn_1.png',
           pagePath: 'pages/index',
-          text: '首页'
+          text: '总榜单'
         },
         {
           iconPath: 'assets/card_percent_0.png',
