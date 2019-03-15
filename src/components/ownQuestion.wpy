@@ -1,14 +1,201 @@
 <style lang="less" scoped>
-
+  .container {
+    width: 100%;
+    font-weight: 400;
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .first-people {
+      width: 80%;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #fff;
+      border-radius: 10px;
+      padding-top: 0px;
+      padding-bottom: 10px;
+      text {
+        line-height: normal;
+      }
+      .avator {
+        margin-top: 10px;
+        width: 70px;
+        height: 70px;
+        border-radius: 35px;
+        margin-bottom: 10px;
+      }
+      .key {
+        font-size: 16px;
+        font-weight: 800;
+      }
+    }
+    .list {
+      margin-top: 10px;
+    }
+    .item {
+      width: 100%;
+      line-height: 50px;
+      margin-top: 1px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      background-color: #fff;
+      height: 50px;
+      .left {
+        margin-left: 5px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .id {
+          width: 25px;
+          text-align: center;
+        }
+        .name {
+          margin-left: 10px;
+        }
+        image {
+          width: 40px;
+          height: 40px;
+          border-radius: 20px;
+        }
+        .own-rank {
+          display: flex;
+          flex-direction: column;
+          margin-left: 10px;
+          .name {
+            margin: 0px;
+            line-height: normal;
+          }
+          .rank {
+            font-size: 10px;
+            color: gray;
+            line-height: normal;
+          }
+        }
+      }
+      .right {
+        margin-right: 10px;
+        display: flex;
+        flex-direction: row;
+        .own-key {
+          font-size: 20px;
+          color: rebeccapurple;
+        }
+        .key {
+          font-size: 20px;
+          color: goldenrod;
+        }
+        .right-right {
+          margin-left: 10px;
+          display: flex;
+          flex-direction: column;
+          line-height: normal;
+          justify-content: center;
+          text-align: center;
+          image {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+    }
+    .item:active {
+      background-color: #d5d4d0;
+    }
+  }
 </style>
 <template>
-    <view>
-        ownQuestion
+  <view class="container">
+    <view class="first-people">  
+      <text>
+          个人刷题数
+      </text>
+      <image class="avator" src="{{firstPeople.avator}}"/>
+      <text> <text class="key"> {{firstPeople.username}}</text> 位居榜单第一 </text>
     </view>
+    <view class="item">
+      <view class="left">
+        <text class="id"></text>
+        <image src="{{myCardDetail.avator}}" />
+        <view class="own-rank">        
+          <text class="name">{{myCardDetail.name}}</text>
+          <text class="rank"> 第{{myCardDetail.ranking}}名</text>
+        </view>
+      </view>
+      <view class="right">
+        <text>  <text class="own-key"> {{myCardDetail.leetcodeNum}} </text> 题 </text>
+        <view class="right-right">
+          <text> {{myCardDetail.love}} </text>
+          <image src="{{myCardDetail.ownLove ? '../assets/support_btn_1.svg' : '../assets/support_btn_0.svg'}}"/>
+        </view>
+      </view>
+    </view>
+    <view class="list"></view>
+    <repeat for="{{list}}">
+      <view class="item">
+        <view class="left">
+          <text class="id"> {{index + 1}}</text>
+          <image src="{{item.avator}}" />
+          <text class="name">{{item.name}}</text>
+        </view>
+        <view class="right">
+          <text> <text class="key"> {{item.leetcodeNum}} </text> 题 </text>
+          <view class="right-right"> 
+            <text> {{item.love}} </text>
+            <image src="{{item.ownLove ? '../assets/support_btn_1.svg' : '../assets/support_btn_0.svg'}}" @tap="supportThisPeople({{index}})"/>
+          </view>
+        </view>
+      </view>
+    </repeat>
+  </view>
 </template>
 <script>
 import wepy from 'wepy'
 export default class OwnQuestion extends wepy.component {
-
+  data = {
+    firstPeople: {
+      avator: '../assets/avator.jpg',
+      username: 'Luther'
+    },
+    myCardDetail: {
+      avator: '../assets/avator.jpg',
+      name: 'Luther',
+      leetcodeNum: 100,
+      love: 0,
+      ranking: 1
+    },
+    list: [
+      {
+        avator: '../assets/avator.jpg',
+        love: 0,
+        name: 'Luther',
+        leetcodeNum: 100,
+        ownLove: true
+      },
+      {
+        avator: '../assets/avator.jpg',
+        love: 0,
+        name: 'Luther',
+        leetcodeNum: 100,
+        ownLove: true
+      },
+      {
+        avator: '../assets/avator.jpg',
+        love: 0,
+        name: 'Luther',
+        leetcodeNum: 100,
+        ownLove: true
+      }
+    ]
+  }
+  methods = {
+    supportThisPeople(index) {
+      this.data.list[index].ownLove === true ? this.data.list[index].ownLove = false : this.data.list[index].ownLove = true
+      this.$apply()
+    }
+  }
 }
 </script>
