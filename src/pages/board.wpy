@@ -245,15 +245,31 @@
         return date.getFullYear + '-' + date.getMonth() + '-' + date.getDate()
       }
     }
+    async getSummary() {
+      const res = await wepy.request({
+        url: 'https://lc.hellogod.cn/api/checkDayInfo/summary', //开发者服务器接口地址",
+        data: { date: this.methods.getcurrentTime() }, //请求的参数",
+        method: 'GET',
+        dataType: 'json' //如果设为json，会尝试对返回的数据做一次 JSON.parse
+      })
+      console.log(res)
+      return res
+    }
+    async getUserArray() {
+      const res = await wepy.request({
+        url: 'https://lc.hellogod.cn/api/checkDayInfo/day', //开发者服务器接口地址",
+        data: { date: this.methods.getcurrentTime() }, //请求的参数",
+        method: 'GET',
+        dataType: 'json' //如果设为json，会尝试对返回的数据做一次 JSON.parse
+      })
+      console.log(res)
+      return res
+    }
     async onLoad() {
       try {
-        const res = await wepy.request({
-          url: 'https://lc.hellogod.cn/api/checkDayInfo/day', //开发者服务器接口地址",
-          data: { date: this.methods.getcurrentTime() }, //请求的参数",
-          method: 'GET',
-          dataType: 'json' //如果设为json，会尝试对返回的数据做一次 JSON.parse
-        })
-        console.log(res)
+        console.log(new Date())
+        this.getSummary()
+        this.getUserArray()
       } catch (error) {
         console.log(error)
       }
