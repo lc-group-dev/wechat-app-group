@@ -236,10 +236,27 @@
       supportThisPeople(index) {
         this.data.list[index].ownLove === true ? this.data.list[index].ownLove = false : this.data.list[index].ownLove = true
         this.$apply()
+      },
+      /**
+       * 获取当前时间
+       */
+      getcurrentTime() {
+        let date = new Date()
+        return date.getFullYear + '-' + date.getMonth() + '-' + date.getDate()
       }
     }
-    onLoad() {
-
+    async onLoad() {
+      try {
+        const res = await wepy.request({
+          url: 'https://lc.hellogod.cn/api/checkDayInfo/day', //开发者服务器接口地址",
+          data: { date: this.methods.getcurrentTime() }, //请求的参数",
+          method: 'GET',
+          dataType: 'json' //如果设为json，会尝试对返回的数据做一次 JSON.parse
+        })
+        console.log(res)
+      } catch (error) {
+        console.log(error)
+      }
     }
   }
 </script>
