@@ -31,35 +31,33 @@
 <script>
 import wepy from 'wepy'
 import process from '@/components/process'
-import { getLoginInfo, storeUserInfo } from '@/service/auth'
+import { getLoginInfo } from '@/service/auth'
 export default class Home extends wepy.page {
   config = {
     navigationBarBackgroundColor: '#ffffff',
     navigationBarTitleText: ''
   }
   data = {
-    alreadyLogin: true
+    alreadyLogin: false
   }
   components = {
     process
   }
   methods = {
     async onGotUserInfo(e) {
-      console.log(e.detail.errMsg)
+      wepy.$instance.globalData.userinfo = e.detail.userInfo
       console.log(e.detail.userInfo)
-      console.log(e.detail.rawData)
-      await storeUserInfo(e.detail.userInfo)
+      wepy.redirectTo({ url: 'bindLeetCode' })
     }
   }
   async onLoad() {
     const state = await getLoginInfo()
+    console.log(state)
     setTimeout(() => {
-      if (state === 0) {
-        this.alreadyLogin = false
-      } else if (state === 1) {
-        wepy.redirectTo({ url: 'pages/bindLeetcode' })
+      if (state === 1) {
+        wepy.switchTab({ url: 'index' })
       } else {
-        wepy.redirectTo({ url: 'pages/index' })
+        this.alreadyLogin = false
       }
     }, 2000)
   }

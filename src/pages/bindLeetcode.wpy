@@ -45,12 +45,14 @@
                 请输入您的leetcode\力扣中国个人主页链接
             </text>
             <input class="input" value='{{link}}' bindinput="bindInput"/>
-            <button class="{{link !== '' ? 'fill' : 'no-fill' }}"> 提交链接 </button>
+            <button class="{{link !== '' ? 'fill' : 'no-fill' }}" @tap="storeUserInfo()"> 提交链接 </button>
         </view>
     </view>
 </template>
 <script>
 import wepy from 'wepy'
+import { storeUserInfo } from '@/service/auth'
+
 export default class BindLeetCode extends wepy.page {
   config = {
     'navigationBarTitleText': '绑定LeetCode'
@@ -60,7 +62,16 @@ export default class BindLeetCode extends wepy.page {
   }
   methods = {
     bindInput(e) {
-      this.link = e.detail.value
+      this.data.link = e.detail.value
+    },
+    async storeUserInfo() {
+      wepy.$instance.globalData.leetcodeLink = this.data.link
+      try {
+        await storeUserInfo()
+        wepy.switchTab({ url: 'index' })
+      } catch (error) {
+        alert(error)
+      }
     }
   }
 }
